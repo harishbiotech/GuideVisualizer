@@ -1,0 +1,4 @@
+Flask>=3.0.0
+pandas>=2.2.0
+plotly>=6.0.0
+biopython>=1.85
