@@ -1,0 +1,600 @@
+/* =====================================================
+   General
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+    background:#f5f7fa;
+
+    color:#222;
+
+    padding:25px;
+
+}
+
+
+/* =====================================================
+   Container
+===================================================== */
+
+.container{
+
+    width:95%;
+
+    margin:auto;
+
+}
+
+
+/* =====================================================
+   Header
+===================================================== */
+
+header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+header h1{
+
+    color:#1b4f72;
+
+    margin-bottom:8px;
+
+}
+
+header p{
+
+    color:#666;
+
+}
+
+
+/* =====================================================
+   Control Panel
+===================================================== */
+
+.control-panel{
+
+    background:white;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+    margin-bottom:20px;
+
+}
+
+
+.control-group{
+
+    margin-bottom:20px;
+
+}
+
+
+.control-group > label{
+
+    display:block;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+
+/* =====================================================
+   Select (Choices.js takes over visual styling of the
+   actual dropdown once initialized; this just sizes the
+   underlying element before that happens)
+===================================================== */
+
+select{
+
+    width:100%;
+
+    padding:10px;
+
+    font-size:15px;
+
+}
+
+
+/* =====================================================
+   Tool Cards (checkbox + Top-N + Show-all, per tool)
+===================================================== */
+
+.tool-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+
+    gap:16px;
+
+}
+
+.tool-card{
+
+    border:1px solid #dfe6ec;
+
+    border-radius:8px;
+
+    padding:14px;
+
+    background:#fafbfc;
+
+}
+
+.tool-card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+    cursor:pointer;
+
+}
+
+.topn-row{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.topn-label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:14px;
+
+    color:#444;
+
+    font-weight:normal;
+
+}
+
+.topn-input{
+
+    width:70px;
+
+    padding:6px 8px;
+
+    font-size:14px;
+
+    border:1px solid #ccc;
+
+    border-radius:4px;
+
+}
+
+.topn-input:disabled{
+
+    background:#eee;
+
+    color:#999;
+
+}
+
+.showall-label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:13px;
+
+    color:#666;
+
+    font-weight:normal;
+
+    cursor:pointer;
+
+}
+
+
+/* =====================================================
+   Buttons
+===================================================== */
+
+.button-group{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:25px;
+
+}
+
+
+button{
+
+    padding:12px 28px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2471A3;
+
+    color:white;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+button:hover{
+
+    background:#154360;
+
+}
+
+
+/* =====================================================
+   Guide Detail / Copy Panel
+===================================================== */
+
+.guide-detail{
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+    padding:16px 20px;
+
+    margin-bottom:20px;
+
+    border-left:5px solid #2471A3;
+
+}
+
+.guide-detail.is-hidden{
+
+    display:none;
+
+}
+
+.guide-detail-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:10px;
+
+}
+
+.guide-detail-tool{
+
+    font-weight:bold;
+
+    font-size:16px;
+
+    color:#1b4f72;
+
+}
+
+.gd-close{
+
+    background:transparent;
+
+    color:#999;
+
+    font-size:22px;
+
+    line-height:1;
+
+    padding:0 6px;
+
+}
+
+.gd-close:hover{
+
+    background:transparent;
+
+    color:#333;
+
+}
+
+.guide-detail-seq-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:10px;
+
+}
+
+.guide-detail-seq{
+
+    flex:1;
+
+    background:#f0f3f6;
+
+    padding:10px 14px;
+
+    border-radius:6px;
+
+    font-size:15px;
+
+    letter-spacing:1px;
+
+    overflow-x:auto;
+
+    white-space:nowrap;
+
+}
+
+.gd-copy-btn{
+
+    padding:8px 18px;
+
+    font-size:14px;
+
+    flex-shrink:0;
+
+}
+
+.guide-detail-meta{
+
+    display:flex;
+
+    gap:30px;
+
+    font-size:14px;
+
+    color:#444;
+
+}
+
+
+/* =====================================================
+   UTR/CDS status note
+===================================================== */
+
+.utr-note{
+
+    background:#fff8e1;
+
+    color:#8a6d00;
+
+    border:1px solid #ffe082;
+
+    border-radius:6px;
+
+    padding:10px 14px;
+
+    margin-bottom:14px;
+
+    font-size:14px;
+
+}
+
+.utr-note.is-hidden{
+
+    display:none;
+
+}
+
+
+/* =====================================================
+   Plot
+===================================================== */
+
+.plot-section{
+
+    background:white;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+    padding:20px;
+
+    margin-top:20px;
+
+}
+
+
+#plot{
+
+    width:100%;
+
+    min-height:650px;
+
+    border:2px dashed #cccccc;
+
+    color:#999;
+
+}
+
+/* Placeholder text ("Plotly Visualization Appears Here") is
+   centered only while #plot has the "is-placeholder" class.
+   (Note: a :empty selector would NOT work here, since #plot
+   always contains the placeholder text as a child node on
+   initial page load -- :empty only matches elements with
+   zero child nodes at all, so it would never have applied.
+   script.js toggles this class explicitly instead.) */
+#plot.is-placeholder{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:650px;
+
+}
+
+/* BUG FIX (carried over from v1): previously #plot itself had
+   display:flex with align-items:center / justify-content:center
+   applied unconditionally. That was meant only to center the
+   placeholder text, but once the Plotly chart's div got injected
+   inside #plot, flexbox treated the whole chart as a single
+   centered flex item -- the chart's own width:100%/height:100%
+   then resolved against an auto-sized flex item instead of the
+   actual #plot box, so it rendered small and "boxed in" instead
+   of filling the section. #plot.is-placeholder (above) keeps the
+   placeholder centered; script.js removes that class once a real
+   chart is injected, letting the chart div fill #plot normally. */
+
+#plot .plotly-graph-div{
+
+    width:100% !important;
+
+    height:100% !important;
+
+}
+
+
+/* =====================================================
+   Legend
+===================================================== */
+
+.legend{
+
+    margin-top:20px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+}
+
+
+.legend h3{
+
+    margin-bottom:15px;
+
+}
+
+
+.legend-items{
+
+    display:flex;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.legend-items div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+/* =====================================================
+   Color Boxes
+===================================================== */
+
+.blue,
+.green,
+.orange,
+.red,
+.purple,
+.utr-swatch,
+.cds-swatch{
+
+    width:20px;
+
+    height:20px;
+
+    border:1px solid black;
+
+    display:inline-block;
+
+}
+
+.blue{
+
+    background:#1f77b4;
+
+}
+
+.green{
+
+    background:#2ca02c;
+
+}
+
+.orange{
+
+    background:#ff7f0e;
+
+}
+
+.red{
+
+    background:#d62728;
+
+}
+
+.utr-swatch{
+
+    background:#b0b0b0;
+
+}
+
+.cds-swatch{
+
+    background:#6fae6f;
+
+}
