@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cas13 Guide RNA Visualizer 2.0</title>
+
+    <link rel="icon" href="data:,">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ========================================================= -->
+    <!-- Header -->
+    <!-- ========================================================= -->
+
+    <header>
+
+        <h1>Cas13 Guide RNA Visualizer 2.0</h1>
+
+        <p>
+            Plasmodium falciparum Transcript Guide Visualization
+            &mdash; all transcripts, UTR/CDS overlay, Top-N per tool
+        </p>
+
+    </header>
+
+
+    <!-- ========================================================= -->
+    <!-- Control Panel -->
+    <!-- ========================================================= -->
+
+    <section class="control-panel">
+
+        <!-- Transcript (searchable) -->
+
+        <div class="control-group">
+
+            <label for="transcript">
+
+                Transcript
+
+            </label>
+
+            <select id="transcript">
+
+                <!-- Populated dynamically; Choices.js makes this
+                     searchable / type-ahead -->
+
+            </select>
+
+        </div>
+
+
+        <!-- Tools + Top-N -->
+
+        <div class="control-group">
+
+            <label>
+
+                Prediction Tools &amp; Top-N
+
+            </label>
+
+            <div class="tool-grid">
+
+                {% for tool in tools %}
+
+                <div class="tool-card" data-tool="{{ tool }}">
+
+                    <label class="tool-card-header">
+
+                        <input
+                                type="checkbox"
+                                class="tool-checkbox"
+                                value="{{ tool }}"
+                                checked>
+
+                        {{ tool }}
+
+                    </label>
+
+                    <div class="topn-row">
+
+                        <label class="topn-label">
+                            Top
+                            <input
+                                    type="number"
+                                    class="topn-input"
+                                    min="1"
+                                    max="{{ max_top_n }}"
+                                    value="{{ default_top_n[tool] }}">
+                            guides
+                        </label>
+
+                        <label class="showall-label">
+                            <input type="checkbox" class="showall-checkbox">
+                            Show all
+                        </label>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- Buttons -->
+
+        <div class="button-group">
+
+            <button id="visualize">
+
+                Visualize
+
+            </button>
+
+            <button id="full">
+
+                Full Transcript
+
+            </button>
+
+            <button id="zoom">
+
+                Zoom to Guides
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- Guide Detail / Copy Panel -->
+    <!-- ========================================================= -->
+
+    <section id="guide-detail" class="guide-detail is-hidden">
+
+        <div class="guide-detail-row">
+
+            <span class="guide-detail-tool" id="gd-tool"></span>
+
+            <button id="gd-close" class="gd-close" aria-label="Close">&times;</button>
+
+        </div>
+
+        <div class="guide-detail-seq-row">
+
+            <code id="gd-sequence" class="guide-detail-seq"></code>
+
+            <button id="gd-copy" class="gd-copy-btn">Copy</button>
+
+        </div>
+
+        <div class="guide-detail-meta">
+
+            <span>Actual Score: <strong id="gd-score"></strong></span>
+
+            <span>Normalized Score: <strong id="gd-norm-score"></strong></span>
+
+            <span>Start: <strong id="gd-start"></strong></span>
+
+            <span>End: <strong id="gd-end"></strong></span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- Plot -->
+    <!-- ========================================================= -->
+
+    <section class="plot-section">
+
+        <div id="utr-note" class="utr-note is-hidden"></div>
+
+        <div id="plot" class="is-placeholder">
+
+            Plotly Visualization Appears Here
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================================= -->
+    <!-- Legend -->
+    <!-- ========================================================= -->
+
+    <section class="legend">
+
+        <h3>
+
+            Legend
+
+        </h3>
+
+        <div class="legend-items">
+
+            <div>
+
+                <span class="blue"></span>
+
+                TIGER
+
+            </div>
+
+            <div>
+
+                <span class="green"></span>
+
+                DeepCas13
+
+            </div>
+
+            <div>
+
+                <span class="orange"></span>
+
+                CASowary
+
+            </div>
+
+            <div>
+
+                <span class="red"></span>
+
+                Cas13design
+
+            </div>
+
+            <div>
+
+                <span class="utr-swatch"></span>
+
+                5'/3' UTR
+
+            </div>
+
+            <div>
+
+                <span class="cds-swatch"></span>
+
+                CDS
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
